@@ -1,0 +1,26 @@
+{
+ "dls": {
+  "name": "dls_k1.5_lead0.15",
+  "ctrl": "dls",
+  "k": 1.5,
+  "lead": 0.15,
+  "trust": null,
+  "strict": 5.078125,
+  "coarse": 22.4609375,
+  "containment": 1.953125,
+  "pos_med": 39.840370416641235,
+  "ori_med": 6.11523962020874
+ },
+ "qp": {
+  "name": "qp_k1.5_lead0.15",
+  "ctrl": "qp",
+  "k": 1.5,
+  "lead": 0.15,
+  "trust": null,
+  "strict": 5.859375,
+  "coarse": 22.36328125,
+  "containment": 2.24609375,
+  "pos_med": 39.810169488191605,
+  "ori_med": 6.125401020050049
+ }
+}

@@ -1,0 +1,3 @@
+simulator-valid candidates: 93076 / 103220 (90.2 %)
+train starts 84836, train goals 84836, eval 4120, tune 1024
+eval initial error: position (m) P5/P50/P95 [0.148 0.405 0.749] orientation (deg) P50 129.7
