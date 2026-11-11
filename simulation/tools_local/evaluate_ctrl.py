@@ -29,7 +29,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from isaaclab.app import AppLauncher
 
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-parser.add_argument("--task", default="PolicyIK-OpenArm-Play")
+parser.add_argument("--robot", default="openarm", choices=["openarm", "franka"], help="P2: franka uses tools_local/policyik_franka")
+parser.add_argument("--task", default=None, help="default: PolicyIK-OpenArm-Play / PolicyIK-Franka-Play")
 parser.add_argument("--controller", required=True, choices=["policyik", "dls", "qp", "mpc", "dls_default", "hold"])
 parser.add_argument("--checkpoint", default=None)
 parser.add_argument("--task_file", required=True)
@@ -68,11 +69,15 @@ import isaaclab_tasks  # noqa: F401,E402
 from isaaclab_tasks.utils.hydra import hydra_task_config  # noqa: E402
 
 import policyik_sim.tasks  # noqa: F401,E402
+import policyik_franka  # noqa: F401,E402  (registers PolicyIK-Franka*)
 from boxqp import solve_box_qp  # noqa: E402
 from ctrl_actions import AccumulatedJointReferenceFFActionCfg, ReferenceJointActionCfg  # noqa: E402
 
 FREEZE = 1.0e6
-ARM_EXPR = ["openarm_joint[1-7]"]
+ARM_EXPR = ["openarm_joint[1-7]"] if args_cli.robot == "openarm" else ["panda_joint[1-7]"]
+ARM_ACTUATORS = ["openarm_arm"] if args_cli.robot == "openarm" else ["panda_shoulder", "panda_forearm"]
+if args_cli.task is None:
+    args_cli.task = "PolicyIK-OpenArm-Play" if args_cli.robot == "openarm" else "PolicyIK-Franka-Play"
 TRANSIENT_STEPS, TRANSIENT_OFFSET_M, TRANSIENT_ROT_DEG = 40, 0.30, 90.0
 CTRL = args_cli.controller
 DEFAULTS = {"dls": (2.0, 0.02), "qp": (1.5, 0.005), "mpc": (1.5, 0.005)}
@@ -89,10 +94,11 @@ def main(env_cfg: ManagerBasedRLEnvCfg, agent_cfg: dict):
     env_cfg.seed = args_cli.eval_seed
     agent_cfg["params"]["seed"] = args_cli.eval_seed
     if args_cli.kp_scale != 1.0 or args_cli.kd_scale != 1.0:
-        act = env_cfg.scene.robot.actuators["openarm_arm"]
-        act.stiffness = act.stiffness * args_cli.kp_scale
-        act.damping = act.damping * args_cli.kd_scale
-        print(f"[evaluate_ctrl] PD perturbation: stiffness={act.stiffness} damping={act.damping}", flush=True)
+        for name in ARM_ACTUATORS:
+            act = env_cfg.scene.robot.actuators[name]
+            act.stiffness = act.stiffness * args_cli.kp_scale
+            act.damping = act.damping * args_cli.kd_scale
+            print(f"[evaluate_ctrl] PD perturbation {name}: stiffness={act.stiffness} damping={act.damping}", flush=True)
     a = env_cfg.actions.arm_action
     if CTRL == "policyik":
         env_cfg.actions.arm_action = AccumulatedJointReferenceFFActionCfg(
@@ -287,7 +293,7 @@ def main(env_cfg: ManagerBasedRLEnvCfg, agent_cfg: dict):
         print(f"[evaluate_ctrl] mpc fallbacks {mpc.n_fallback} of {mpc.n_solves} solves", flush=True)
     if ctrl_time:
         out["ctrl_time_per_step_s"] = np.array(ctrl_time, np.float64)
-    out["config"] = np.array(str(dict(controller=CTRL, gravity_ff=GFF, k=K if CTRL in DEFAULTS else None,
+    out["config"] = np.array(str(dict(controller=CTRL, robot=args_cli.robot, gravity_ff=GFF, k=K if CTRL in DEFAULTS else None,
                                       lam=LAM if CTRL in DEFAULTS else None, lead=args_cli.lead,
                                       rot_w=args_cli.rot_w, acc=args_cli.acc, trust=args_cli.trust, kp_scale=args_cli.kp_scale,
                                       kd_scale=args_cli.kd_scale, num_envs=n, steps=T,
