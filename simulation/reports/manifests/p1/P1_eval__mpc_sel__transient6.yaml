@@ -1,0 +1,33 @@
+experiment_id: P1_eval__mpc_sel__transient6
+status: done
+run_end_utc: 2026-11-10T13:45:35Z
+repository_sha: 22f3a5cddc674e88995cae18b93cd5a5cb3ddb86
+host_gpu: NVIDIA GeForce RTX 5090 (32 GB)
+nvidia_driver: 580.178.04
+python_env_freeze: outputs/audit/pip_freeze.txt
+robot: openarm_7dof
+asset_revision: bad82e23716e6941c2de78ccb978f57c78b37734
+simulator: isaacsim_5.1.0 (standalone 5.1.0-rc.19+release.26219, ~/isaac-sim-standalone-5.1.0-linux-x86_64)
+isaaclab: v2.3.2 (37ddf626871758333d6ed89cf64ad702aef127d0)
+controller: mpc
+gravity_ff: True
+k: 1.5
+lam: 0.005
+lead: 0.15
+rot_w: 0.2
+acc: 100.0
+trust: 10.0
+kp_scale: 1.0
+kd_scale: 1.0
+num_envs: 1024
+steps: 160
+checkpoint: None
+task_file: data/eval_tasks.npz
+transient_seed: 6
+task_file_sha256: 3cf07342fd30a358de5aec4bf5d4b24824626d411cf6b6a3c4d115a00eeda83f
+protocol: single transient_seed=6
+output_npz: outputs/p1/eval/mpc_sel/transient6.npz
+output_npz_sha256: edcdb15d2b256a6ab3aa58b64af639897238200d3109c8dafd388dbca8e28ad7
+log_file: outputs/p1/eval/mpc_sel/transient6.log
+result_strict_pct: 1.796
+result_coarse_pct: 57.573

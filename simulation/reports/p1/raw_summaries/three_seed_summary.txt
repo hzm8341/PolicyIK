@@ -1,0 +1,37 @@
+4120 tasks, 3 seed(s); mean +- SD over seeds
+
+Single attempt
+  strict (%)                     93.49 +- 0.16
+  coarse (%)                     96.59 +- 0.14
+  entry (%)                      94.75 +- 0.07
+  containment (%)                92.48 +- 0.10
+  uncontained after entry (%)     2.40 +- 0.15
+  entry time (s)                  1.71 +- 0.02
+  final-second drift (um)        13.95 +- 2.25
+  final-second drift (deg)      0.0020 +- 0.0004
+  position mean (mm)              3.28 +- 0.14
+  position median (mm)            0.25 +- 0.02
+  orientation mean (deg)          0.84 +- 0.04
+  orientation median (deg)        0.04 +- 0.00
+
+Deployment protocol (cumulative strict and coarse success over executed attempts; E[N])
+  single attempt           strict   93.49 +- 0.16   coarse   96.59 +- 0.14   E[N] 1.000
+  + error-corrected goal   strict   94.79 +- 0.07   coarse   96.67 +- 0.10   E[N] 1.036
+  + transient goal 0       strict   96.94 +- 0.32   coarse   98.37 +- 0.11   E[N] 1.088
+  + transient goal 1       strict   97.75 +- 0.27   coarse   98.96 +- 0.07   E[N] 1.119
+  + transient goal 2       strict   98.16 +- 0.29   coarse   99.22 +- 0.07   E[N] 1.142
+  + transient goal 3       strict   98.42 +- 0.26   coarse   99.39 +- 0.05   E[N] 1.160
+  + transient goal 4       strict   98.61 +- 0.25   coarse   99.51 +- 0.06   E[N] 1.176
+  + transient goal 5       strict   98.71 +- 0.22   coarse   99.56 +- 0.09   E[N] 1.190
+  + transient goal 6       strict   98.84 +- 0.19   coarse   99.63 +- 0.11   E[N] 1.202
+  + transient goal 7       strict   98.91 +- 0.18   coarse   99.65 +- 0.11   E[N] 1.214
+
+Delivered attempt (first strict success, otherwise the last executed attempt)
+  strict (%)                     98.91 +- 0.18
+  coarse (%)                     99.44 +- 0.11
+  position mean (mm)              0.65 +- 0.19
+  position median (mm)            0.25 +- 0.02
+  orientation mean (deg)          0.17 +- 0.06
+  orientation median (deg)        0.04 +- 0.00
+  E[N]                            1.21 +- 0.02
+  error-corrected goal: attempts [152, 132, 165], successes [55, 49, 57] per seed

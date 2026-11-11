@@ -1,0 +1,29 @@
+experiment_id: P1_tune__dls_k0.5_lead0.25
+status: done
+run_end_utc: 2026-11-10T12:00:30Z
+repository_sha: 22f3a5cddc674e88995cae18b93cd5a5cb3ddb86
+host_gpu: NVIDIA GeForce RTX 5090 (32 GB)
+nvidia_driver: 580.178.04
+python_env_freeze: outputs/audit/pip_freeze.txt
+robot: openarm_7dof
+asset_revision: bad82e23716e6941c2de78ccb978f57c78b37734
+simulator: isaacsim_5.1.0 (standalone 5.1.0-rc.19+release.26219, ~/isaac-sim-standalone-5.1.0-linux-x86_64)
+isaaclab: v2.3.2 (37ddf626871758333d6ed89cf64ad702aef127d0)
+controller: dls
+gravity_ff: True
+k: 0.5
+lam: 0.02
+lead: 0.25
+rot_w: 0.2
+num_envs: 1024
+steps: 160
+checkpoint: None
+task_file: outputs/p1/tune_tasks.npz
+transient_seed: -1
+task_file_sha256: f6bd23a633825808863ba9f8e083f1fa1d95d674820435274d5fbaff93565ca0
+protocol: tuning
+output_npz: outputs/p1/tune/dls_k0.5_lead0.25.npz
+output_npz_sha256: fcd1fb585e8abfac22cd5f570666ddc7e24b0c33e56c19bae23c816349cd8f33
+log_file: outputs/p1/tune/dls_k0.5_lead0.25.log
+result_strict_pct: 0.000
+result_coarse_pct: 0.000

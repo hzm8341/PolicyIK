@@ -1,0 +1,29 @@
+experiment_id: E00
+status: pass
+repository_sha: 22f3a5cddc674e88995cae18b93cd5a5cb3ddb86
+run_start_utc: 2026-11-10T10:03Z
+host_gpu: NVIDIA GeForce RTX 5090 (32 GB)
+nvidia_driver: 580.178.04
+python_env_freeze: outputs/audit/pip_freeze.txt
+robot: openarm_7dof
+asset_revision: bad82e23716e6941c2de78ccb978f57c78b37734
+simulator: isaacsim_5.1.0 (standalone 5.1.0-rc.19+release.26219, ~/isaac-sim-standalone-5.1.0-linux-x86_64)
+isaaclab: v2.3.2 (37ddf626871758333d6ed89cf64ad702aef127d0)
+controller: policyik_pretrained
+checkpoint: checkpoints/policyik_s1.pth
+checkpoint_sha256: 12b9d2e0087f8494df03780402f7fe3396cefde235451f6ada194d7712b17c3e
+task_file: outputs/smoke64/tasks.npz
+task_file_sha256: c05c88e29e7f7cee369d49ceab2a93a05063ce98b60cfac917fa0906406400b9
+seed: 1
+num_envs: 64
+physics_hz: 60
+policy_hz: 30
+steps_per_attempt: 160
+protocol: single
+strict_pos_m: 0.001
+strict_rot_deg: 0.2
+terminal_window_steps: 30
+config_diff: NONE (official scripts unmodified; local env = conda python3.11 + standalone Isaac Sim via env_local.sh)
+output_npz: outputs/smoke64/single.npz
+log_file: outputs/smoke64/run.log
+notes: ''

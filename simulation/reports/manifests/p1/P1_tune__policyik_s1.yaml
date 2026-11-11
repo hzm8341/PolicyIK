@@ -1,0 +1,30 @@
+experiment_id: P1_tune__policyik_s1
+status: done
+run_end_utc: 2026-11-10T11:58:52Z
+repository_sha: 22f3a5cddc674e88995cae18b93cd5a5cb3ddb86
+host_gpu: NVIDIA GeForce RTX 5090 (32 GB)
+nvidia_driver: 580.178.04
+python_env_freeze: outputs/audit/pip_freeze.txt
+robot: openarm_7dof
+asset_revision: bad82e23716e6941c2de78ccb978f57c78b37734
+simulator: isaacsim_5.1.0 (standalone 5.1.0-rc.19+release.26219, ~/isaac-sim-standalone-5.1.0-linux-x86_64)
+isaaclab: v2.3.2 (37ddf626871758333d6ed89cf64ad702aef127d0)
+controller: policyik
+gravity_ff: False
+k: None
+lam: None
+lead: 0.15
+rot_w: 0.2
+num_envs: 1024
+steps: 160
+checkpoint: checkpoints/policyik_s1.pth
+task_file: outputs/p1/tune_tasks.npz
+transient_seed: -1
+checkpoint_sha256: 12b9d2e0087f8494df03780402f7fe3396cefde235451f6ada194d7712b17c3e
+task_file_sha256: f6bd23a633825808863ba9f8e083f1fa1d95d674820435274d5fbaff93565ca0
+protocol: tuning
+output_npz: outputs/p1/tune/policyik_s1.npz
+output_npz_sha256: a6f39f177a814445bc6e1500a3e36b02cf9cffc7c21c71595e1a0e2f0235b56d
+log_file: outputs/p1/tune/policyik_s1.log
+result_strict_pct: 92.285
+result_coarse_pct: 95.703

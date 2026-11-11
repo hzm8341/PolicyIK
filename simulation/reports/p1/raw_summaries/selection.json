@@ -1,0 +1,38 @@
+{
+ "dls": {
+  "name": "dls_k2_lead0.15",
+  "ctrl": "dls",
+  "k": 2.0,
+  "lead": 0.15,
+  "trust": null,
+  "strict": 50.87890625,
+  "coarse": 64.74609375,
+  "containment": 43.75,
+  "pos_med": 0.8665106724947691,
+  "ori_med": 0.1417754590511322
+ },
+ "qp": {
+  "name": "qp_k1.5_lead0.15",
+  "ctrl": "qp",
+  "k": 1.5,
+  "lead": 0.15,
+  "trust": null,
+  "strict": 57.8125,
+  "coarse": 64.55078125,
+  "containment": 47.75390625,
+  "pos_med": 0.5376576445996761,
+  "ori_med": 0.09221325069665909
+ },
+ "mpc": {
+  "name": "mpc_k1.5_lead0.15_tr10",
+  "ctrl": "mpc",
+  "k": 1.5,
+  "lead": 0.15,
+  "trust": 10.0,
+  "strict": 58.59375,
+  "coarse": 64.94140625,
+  "containment": 48.92578125,
+  "pos_med": 0.5250256508588791,
+  "ori_med": 0.08606883883476257
+ }
+}

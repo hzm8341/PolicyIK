@@ -1,0 +1,17 @@
+wrote reports/policyik_errors.csv (12360 rows)
+
+Failure classes (single attempt, count per seed)
+  class                            s1     s2     s3
+  success_contained              3810   3814   3806
+  success_mean_only                42     44     39
+  invalid_nonfinite                 0      0      0
+  far_from_goal                   137    147    137
+  near_miss_never_entered          77     76     86
+  entered_then_drifted             42     29     46
+  oscillating                      12     10      6
+
+Cross-seed consistency of single-attempt strict failures (same task)
+  tasks failing in exactly 0 seed(s): 3605
+  tasks failing in exactly 1 seed(s): 304
+  tasks failing in exactly 2 seed(s): 132
+  tasks failing in exactly 3 seed(s): 79
