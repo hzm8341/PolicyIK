@@ -20,6 +20,8 @@ We added the simulator's exact gravity compensation (`get_gravity_compensation_f
 
 Our explanation: the command-state observation d = z_{t-1} − q_t carries the holding offset Kp⁻¹τg(q) during training (for example, about −0.09 rad on joint 4). With FF, d ≈ 0, which the policy never saw in training.
 
+Supporting evidence: fine-tuning the released seed-1 checkpoint for 1,000 PPO epochs with FF enabled in training (everything else unchanged) gives 93.35 % strict with FF at test time, and a control fine-tune without FF stays at 93.13 % (and 0 % with FF).
+
 Was the 94.3 % obtained with a policy trained with FF? If so, could that checkpoint (or its training config) be released? We ask because it determines whether the released sim checkpoint can be used with an FF motor layer.
 
 **2. Default Isaac Lab DLS (Table 6: 1.60 % strict / 42.86 % coarse, median 5.88 mm)**

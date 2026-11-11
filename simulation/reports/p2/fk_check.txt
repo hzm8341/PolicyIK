@@ -1,0 +1,24 @@
+joint names (sim order): ['panda_joint1', 'panda_joint2', 'panda_joint3', 'panda_joint4', 'panda_joint5', 'panda_joint6', 'panda_joint7']
+FK, first 20 configs: max |dp| = 0.0111 mm, max |dR| = 0.0001 deg
+FK, all 2000 configs: max |dp| = 0.0140 mm, P99 = 0.0091 mm, max |dR| = 0.0002 deg
+soft limits sim vs URDF (rad):
+  panda_joint1: sim [-2.8973, 2.8973]  urdf [-2.8973, 2.8973]
+  panda_joint2: sim [-1.7628, 1.7628]  urdf [-1.7628, 1.7628]
+  panda_joint3: sim [-2.8973, 2.8973]  urdf [-2.8973, 2.8973]
+  panda_joint4: sim [-3.0718, -0.0698]  urdf [-3.0718, -0.0698]
+  panda_joint5: sim [-2.8973, 2.8973]  urdf [-2.8973, 2.8973]
+  panda_joint6: sim [-0.0175, 3.7525]  urdf [-0.0175, 3.7525]
+  panda_joint7: sim [-2.8973, 2.8973]  urdf [-2.8973, 2.8973]
+max |limit diff| = 9.99e-08 rad
+Kp per arm joint: [80. 80. 80. 80. 80. 80. 80.]
+effort limits: [87. 87. 87. 87. 12. 12. 12.]
+holding offset Kp^-1 tau_g over valid configs (rad): median |.| / P95 |.| / max |.| per joint
+  panda_joint1: 0.0000 / 0.0000 / 0.0000   (|tau_g| P95 0.00 Nm)
+  panda_joint2: 0.3021 / 0.6518 / 0.6893   (|tau_g| P95 52.14 Nm)
+  panda_joint3: 0.0961 / 0.2991 / 0.3610   (|tau_g| P95 23.93 Nm)
+  panda_joint4: 0.1515 / 0.2526 / 0.2758   (|tau_g| P95 20.21 Nm)
+  panda_joint5: 0.0115 / 0.0254 / 0.0295   (|tau_g| P95 2.03 Nm)
+  panda_joint6: 0.0125 / 0.0243 / 0.0260   (|tau_g| P95 1.94 Nm)
+  panda_joint7: 0.0003 / 0.0006 / 0.0007   (|tau_g| P95 0.05 Nm)
+configs where |tau_g| exceeds the effort limit on some joint: 0.00 %
+FK GATE: PASS (thresholds 0.1 mm, 0.01 deg, 1e-3 rad limits)

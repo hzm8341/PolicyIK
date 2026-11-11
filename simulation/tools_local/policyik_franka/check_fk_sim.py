@@ -31,8 +31,13 @@ N_FK, N_G = 20, 2000
 
 
 def quat_angle(a, b):
-    d = np.abs(np.sum(a * b, -1)).clip(0, 1)
-    return 2 * np.arccos(d)
+    """Angle between unit quaternions (wxyz). Uses atan2(|vec|, |w|) of the relative quaternion: arccos of the
+    dot product is ill-conditioned near 0 (float32 round-off of 1e-7 would read as ~0.05 deg)."""
+    a = a / np.linalg.norm(a, axis=-1, keepdims=True)
+    b = b / np.linalg.norm(b, axis=-1, keepdims=True)
+    w = np.sum(a * b, -1)
+    v = (a[..., :1] * b[..., 1:] - b[..., :1] * a[..., 1:] - np.cross(a[..., 1:], b[..., 1:]))
+    return 2 * np.arctan2(np.linalg.norm(v, axis=-1), np.abs(w))
 
 
 def main():

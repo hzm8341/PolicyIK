@@ -36,10 +36,11 @@ extra = '''
 def _franka_specific(cfg) -> None:
     """Franka-only differences (the OpenArm reach env already restricts these terms to its 7 arm joints)."""
     _sampling._ARM_EXPR = ["panda_joint[1-7]"]        # read at call time by reset_joints_from_pool
-    arm = SceneEntityCfg("robot", joint_names=["panda_joint[1-7]"], preserve_order=True)
-    cfg.observations.policy.joint_pos.params = {"asset_cfg": arm}
-    cfg.observations.policy.joint_vel.params = {"asset_cfg": arm}
-    cfg.rewards.joint_vel.params = {"asset_cfg": arm}
+    def arm():   # one SceneEntityCfg per term (a shared instance cannot be resolved twice)
+        return SceneEntityCfg("robot", joint_names=["panda_joint[1-7]"], preserve_order=True)
+    cfg.observations.policy.joint_pos.params = {"asset_cfg": arm()}
+    cfg.observations.policy.joint_vel.params = {"asset_cfg": arm()}
+    cfg.rewards.joint_vel.params = {"asset_cfg": arm()}
     cfg.commands.ee_pose.ranges.pitch = (0.0, 0.0)     # unused: goals come from the pools
 '''
 src = src.replace("\n\ndef _configure(", extra + "\n\ndef _configure(", 1)
